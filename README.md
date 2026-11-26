@@ -1,40 +1,47 @@
 # Sudan Nyang's SpendWise — Personal Budget Tracker
 
-An 8-week progressive web development project built by **Sudan Nyang** using HTML, CSS, and JavaScript.
+## Project Title
+Sudan Nyang's SpendWise
 
-## What Improvements Were Made This Week
+## Project Description
 
-- Renamed the tracker across the page title, header, sidebar, and feedback messages to **Sudan Nyang's SpendWise**.
-- Replaced static-only page data with live DOM rendering for the budget summary cards, six category cards, and expense table.
-- Added interactive controls to add expenses, update the monthly budget, filter expenses by category, delete individual expense rows, and reload sample expenses.
+Sudan Nyang's SpendWise is an interactive personal budget and expense tracker built across an 8-week web development progression. It lets Sudan Nyang set a monthly budget, log expenses across categories (`Food`, `Transport`, `Rent`, `Entertainment`, `Savings`, `Utilities`, and `Other`), filter records, delete items, view category budget progress cards, and track remaining balance and budget health status in real time.
 
-## How Conditionals Are Used
+## Technologies Used
 
-- **Input validation**: `if (!name)` and `if (Number.isNaN(amount) || amount <= 0)` stop invalid expense entries and show clear inline error messages.
-- **Budget health evaluation**: `evaluateBudgetHealth()` uses `if / else if` branches (`budget <= 0`, `remaining < 0`, `usagePercent >= 80`, and default within-budget state) to set the status badge, feedback banner, and remaining balance message.
-- **Category & filter checks**: Conditionals match expense categories against `categoryBudgets`, highlight over-limit category cards with `.card-over`, and filter visible rows when a category filter is active.
+- **HTML5**: Semantic structure (`<header>`, `<aside>`, `<main>`, `<section>`, `<form>`, `<table>`, `<details>`) and multimedia embeds.
+- **CSS3**: CSS custom properties (`:root` and `@media (prefers-color-scheme: dark)`), CSS Grid dashboard layout, Flexbox components, responsive media queries, and card transitions.
+- **JavaScript (ES6+)**: State arrays, loops, conditional budget evaluation, event listeners, and dynamic DOM rendering.
+- **Git & GitHub**: Version control and public code hosting.
+- **Netlify**: Static site hosting and continuous deployment from GitHub.
 
-## How Arrays Are Used to Store Data
+## GitHub Repository Information
 
-- `categoryBudgets` is an array of category objects (`{ name, limit }`) defining monthly limits for `Food`, `Transport`, `Rent`, `Entertainment`, `Savings`, and `Utilities`.
-- `sampleExpenses` holds initial expense records, while `expenses` is the working array of expense objects (`{ id, name, amount, category, date }`) updated when expenses are added or removed.
+- **Repository Owner**: Sudan Nyang (`sudannyangdiew`)
+- **Repository URL**: https://github.com/sudannyangdiew/personal-budget-tracker
+- **Main Branch**: `main`
 
-## How the DOM Is Updated
+## Live Netlify Website URL
 
-- `renderSummary()` updates text content and status classes on `#summary-budget`, `#summary-spent`, `#summary-remaining`, `#summary-usage`, `#budget-status-badge`, and `#budget-feedback`.
-- `renderCategoryCards()` updates each `.category-card` spent amount, budget target, usage percentage badge, and `.card-over` class.
-- `renderExpenseTable()` clears `#expenses-tbody` and builds `<tr>` and `<td>` elements dynamically via `document.createElement()` (or shows an empty-state row when no items match).
+- **Live Site**: [https://sudan-nyang-spendwise.netlify.app](https://sudannyangpersonalbudgettracker.netlify.app/)
 
-## How User Interactions Are Handled Through Events
+## Deployment Process Summary
 
-- `expenseForm` listens for `"submit"` (`event.preventDefault()`) to validate inputs, push a new expense into `expenses`, reset the form, and re-render the dashboard.
-- `budgetForm` listens for `"submit"` to update `monthlyBudget` and recalculate remaining balance.
-- `categoryFilterSelect` listens for `"change"` to filter table rows by category.
-- `expensesTbody` uses event delegation on `"click"` to detect `.delete-btn` clicks, remove the matching expense by `id`, and update totals and category cards.
-- `resetSampleBtn` listens for `"click"` to restore `sampleExpenses`.
+1. Verified that `index.html`, `style.css`, `script.js`, and `README.md` sit together in the root of `personal-budget-tracker` using relative paths.
+2. Committed the project files and pushed them to `https://github.com/sudannyangdiew/personal-budget-tracker`.
+3. Connected the `personal-budget-tracker` repository to Netlify (`Add new site -> Import an existing project`) with no build command and root publish directory (`.`).
+4. Renamed the generated Netlify subdomain to a project-specific name (`sudan-nyang-spendwise`).
+5. Pushed a follow-up update to `main` and confirmed Netlify automatically built and published the new deployment.
+6. Tested the live Netlify site across desktop and mobile viewports to verify styles, scripts, and interactive expense/budget updates.
 
-## Challenges Encountered and How They Were Resolved
+## Challenges Encountered During Deployment
 
-- **Keeping category cards, table rows, and summary totals in sync**: Adding or deleting an expense affects three parts of the UI at once. Centralizing `renderDashboard()` to call `renderSummary()`, `renderCategoryCards()`, and `renderExpenseTable()` ensures every section stays consistent after any state change.
-- **Handling filtered or empty tables cleanly**: Filtering by a category can result in zero matching rows even when `expenses` is non-empty. Separating `visibleExpenses` from `expenses` in `renderExpenseTable()` lets the table show a category-specific empty message while keeping total spending accurate across all logged expenses.
-  
+- **Verifying relative paths and case sensitivity**: Web servers are stricter than local file browsing about exact file names and relative paths (`style.css`, `script.js`). Checking file names and paths at the repository root prevented missing-asset `404` errors.
+- **Confirming automatic deploy timing**: After pushing changes to GitHub, the live site takes a few seconds to rebuild—monitoring the Netlify **Deploys** tab confirmed the deploy reached **Published** before verifying the live change.
+
+## Lessons Learned
+
+- Keeping static front-end files cleanly organized at the repository root makes GitHub-to-Netlify deployment straightforward and predictable.
+- Connecting GitHub to Netlify creates a continuous deployment pipeline where every push to `main` automatically updates the live website.
+- Testing on the live hosted URL ensures all assets, responsive layouts, and JavaScript interactions work reliably for end users.
+- 
