@@ -2,16 +2,16 @@
 
 An 8-week progressive web development project built with HTML, CSS, and (in later weeks) JavaScript.
 
-## Current Status: Week 2
+## Current Status: Week 3 (Visual Identity)
 
-This version expands the Week 1 static skeleton with a structured expense table, a form wrapper with category options, media embeds, interactive `<details>` help text, and CSS selectors.
+This update refines the visual design of the application using CSS custom properties, Google Fonts (`Plus Jakarta Sans` and `Inter`), structured CSS Box Model cards, and polished form and table styling without changing the underlying HTML structure.
 
 ## What Each Part Does
 
-- **Header (`#main-header`)**: Displays the tracker title, subtitle, and a logo `<img>`.
-- **Add Expense Form (`#expense-form`)**: Contains labeled inputs for expense name, amount, and date, a `<select>` dropdown with five categories (`Food`, `Transport`, `Rent`, `Entertainment`, `Other`), and a `<button type="button">`.
-- **Interactive Guide (`<details>` / `<summary>`)**: Provides collapsible usage instructions without cluttering the page.
-- **Expenses Table (`#expenses-table`)**: Uses `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>` with five sample rows and styled borders, alternating row colors, and hover states.
-- **Budgeting Tips Video (`<iframe>`)**: Embeds an educational video on budgeting.
-- **Stylesheet (`style.css`)**: Styles layout, cards, form controls, and tables using element, class, ID, descendant, direct child, positional pseudo-class, negation pseudo-class, and `:focus` selectors.
+- **Header Card (`#main-header`)**: Displays the tracker icon, `Plus Jakarta Sans` main heading, and subtitle inside a bordered, rounded card.
+- **Add Expense Card (`#add-expense-section`)**: Styles form inputs, category dropdown, date picker, focus rings, and the primary teal `Add Expense` button.
+- **Interactive Guide Card (`#help-section`)**: Uses an amber-accented card and `<details>` / `<summary>` for collapsible instructions.
+- **Expenses Table Card (`#expense-list-section`)**: Presents sample expenses in a bordered table with a teal header, alternating row tints, tabular amounts, and hover highlights.
+- **Budgeting Tips Video Card (`#video-section`)**: Frames the embedded video inside a matching card container.
+- **Stylesheet (`style.css`)**: Centralizes colors, spacing, radii, and font stacks in `:root` and applies element, class, ID, and advanced selectors.
   
