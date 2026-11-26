@@ -1,17 +1,17 @@
-# Personal Budget Tracker
+# SpendWise — Personal Budget Tracker
 
 An 8-week progressive web development project built with HTML, CSS, and (in later weeks) JavaScript.
 
-## Current Status: Week 3 (Visual Identity)
+## Current Status: Week 4 (SpendWise Dashboard Shell — Grid & Flexbox)
 
-This update refines the visual design of the application using CSS custom properties, Google Fonts (`Plus Jakarta Sans` and `Inter`), structured CSS Box Model cards, and polished form and table styling without changing the underlying HTML structure.
+This update restructures the application into a responsive dashboard shell using CSS Grid for the main layout and Flexbox inside the sidebar, header, and six category cards, with `:root` custom properties, a `@media (prefers-color-scheme: dark)` theme override, and hover/focus card transitions.
 
 ## What Each Part Does
 
-- **Header Card (`#main-header`)**: Displays the tracker icon, `Plus Jakarta Sans` main heading, and subtitle inside a bordered, rounded card.
-- **Add Expense Card (`#add-expense-section`)**: Styles form inputs, category dropdown, date picker, focus rings, and the primary teal `Add Expense` button.
-- **Interactive Guide Card (`#help-section`)**: Uses an amber-accented card and `<details>` / `<summary>` for collapsible instructions.
-- **Expenses Table Card (`#expense-list-section`)**: Presents sample expenses in a bordered table with a teal header, alternating row tints, tabular amounts, and hover highlights.
-- **Budgeting Tips Video Card (`#video-section`)**: Frames the embedded video inside a matching card container.
-- **Stylesheet (`style.css`)**: Centralizes colors, spacing, radii, and font stacks in `:root` and applies element, class, ID, and advanced selectors.
+- **Sidebar Navigation (`.sidebar`, `.nav-menu`)**: Uses Flexbox to organize the SpendWise brand mark and section navigation links (`Overview`, `Add Expense`, `Expenses`, `Guide`, `Tips Video`).
+- **Top Header (`.top-header`)**: Uses Flexbox to align the main title, subtitle, and current period badge.
+- **Category Cards (`.category-grid`, `.category-card`)**: Displays six static category cards (`Food`, `Transport`, `Rent`, `Entertainment`, `Savings`, `Utilities`) using Flexbox for internal layout and `200ms` hover/focus transitions.
+- **Add Expense Form (`#expense-form`)**: Preserves labeled inputs, category `<select>`, date input, and `<button type="button">`.
+- **Expenses Table (`#expenses-table`) & Video (`#video-section`)**: Displays sample expense rows with alternating tints and hover highlights, alongside the embedded budgeting tips video.
+- **Responsive & Dark Mode CSS (`style.css`)**: Collapses to a single column below `768px` and overrides `:root` variables for dark color schemes.
   
