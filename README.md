@@ -1,36 +1,40 @@
-# SpendWise — Personal Budget Tracker
+# Sudan Nyang's SpendWise — Personal Budget Tracker
 
-An 8-week progressive web development project built with HTML, CSS, and JavaScript.
+An 8-week progressive web development project built by **Sudan Nyang** using HTML, CSS, and JavaScript.
 
-## What SpendWise Does
+## What Improvements Were Made This Week
 
-SpendWise is a personal budgeting dashboard that tracks monthly budgets and expenses across categories such as Food, Transport, Rent, Entertainment, Savings, and Utilities. In Week 6, it adds a JavaScript foundation (`script.js`) that gathers user input via browser prompts, computes total spending and remaining balance, and prints structured summaries to the developer console.
+- Renamed the tracker across the page title, header, sidebar, and feedback messages to **Sudan Nyang's SpendWise**.
+- Replaced static-only page data with live DOM rendering for the budget summary cards, six category cards, and expense table.
+- Added interactive controls to add expenses, update the monthly budget, filter expenses by category, delete individual expense rows, and reload sample expenses.
 
-## JavaScript Concepts Implemented
+## How Conditionals Are Used
 
-- **Variables & Data Types**: Uses `const` and `let` with strings (`appName`, `currencySymbol`), numbers (`monthlyBudget`, expense amounts), booleans (`isBudgetActive`), arrays (`initialExpenses`, `expenses`), and objects (each expense record).
-- **Conditionals & Validation**: Checks for empty or invalid numeric entries (`Number.isNaN`, `Number.isFinite`, `budget <= 0`) and determines whether the user is within or over budget.
-- **Loops**: Iterates through the `expenses` array using `for...of` to sum total spending.
-- **Functions**: Separates formatting, validation, calculations, input collection, and console output into focused, reusable functions.
-- **Browser Prompts & Console Output**: Collects input with `prompt()` / `confirm()` and displays labeled results using `console.group()`, `console.log()`, and `console.table()`.
+- **Input validation**: `if (!name)` and `if (Number.isNaN(amount) || amount <= 0)` stop invalid expense entries and show clear inline error messages.
+- **Budget health evaluation**: `evaluateBudgetHealth()` uses `if / else if` branches (`budget <= 0`, `remaining < 0`, `usagePercent >= 80`, and default within-budget state) to set the status badge, feedback banner, and remaining balance message.
+- **Category & filter checks**: Conditionals match expense categories against `categoryBudgets`, highlight over-limit category cards with `.card-over`, and filter visible rows when a category filter is active.
 
-## How Variables Are Used
+## How Arrays Are Used to Store Data
 
-- `appName` and `currencySymbol` store constant display settings (`"SpendWise"` and `"$"`).
-- `monthlyBudget` holds the active monthly budget limit, updated when the user enters a budget value.
-- `isBudgetActive` tracks whether the budgeting session is active.
-- `initialExpenses` stores default sample expenses, while `expenses` holds the active list of expense objects that grows when a new expense is added during the prompt flow.
+- `categoryBudgets` is an array of category objects (`{ name, limit }`) defining monthly limits for `Food`, `Transport`, `Rent`, `Entertainment`, `Savings`, and `Utilities`.
+- `sampleExpenses` holds initial expense records, while `expenses` is the working array of expense objects (`{ id, name, amount, category, date }`) updated when expenses are added or removed.
 
-## How User Input Is Collected
+## How the DOM Is Updated
 
-`collectBudgetSessionInput()` uses `prompt()` to ask for the monthly budget and, if confirmed via `confirm()`, prompts for the expense name, amount, and category. `parsePositiveAmount()` converts the text input with `Number.parseFloat()` and falls back safely if the input is blank, cancelled, or negative.
+- `renderSummary()` updates text content and status classes on `#summary-budget`, `#summary-spent`, `#summary-remaining`, `#summary-usage`, `#budget-status-badge`, and `#budget-feedback`.
+- `renderCategoryCards()` updates each `.category-card` spent amount, budget target, usage percentage badge, and `.card-over` class.
+- `renderExpenseTable()` clears `#expenses-tbody` and builds `<tr>` and `<td>` elements dynamically via `document.createElement()` (or shows an empty-state row when no items match).
 
-## How Calculations Are Performed
+## How User Interactions Are Handled Through Events
 
-- `calculateTotalExpenses(expenseList)` loops over each expense item and adds `item.amount` to a running total.
-- `calculateRemainingBalance(budget, totalSpent)` subtracts `totalSpent` from `budget` (`budget - totalSpent`), showing positive funds left or a negative deficit if overspent.
-- `calculateBudgetUsagePercent(budget, totalSpent)` computes `(totalSpent / budget) * 100` to show how much of the budget has been used.
+- `expenseForm` listens for `"submit"` (`event.preventDefault()`) to validate inputs, push a new expense into `expenses`, reset the form, and re-render the dashboard.
+- `budgetForm` listens for `"submit"` to update `monthlyBudget` and recalculate remaining balance.
+- `categoryFilterSelect` listens for `"change"` to filter table rows by category.
+- `expensesTbody` uses event delegation on `"click"` to detect `.delete-btn` clicks, remove the matching expense by `id`, and update totals and category cards.
+- `resetSampleBtn` listens for `"click"` to restore `sampleExpenses`.
 
-## How Functions Help Organize the Code
+## Challenges Encountered and How They Were Resolved
 
-Breaking the logic into small single-purpose functions (`formatMoney`, `parsePositiveAmount`, `calculateTotalExpenses`, `calculateRemainingBalance`, `calculateBudgetUsagePercent`, `collectBudgetSessionInput`, `displayBudgetSummary`, and `runSpendWiseFoundation`) keeps each task easy to read, test, and reuse as SpendWise expands into full DOM interaction in later weeks.
+- **Keeping category cards, table rows, and summary totals in sync**: Adding or deleting an expense affects three parts of the UI at once. Centralizing `renderDashboard()` to call `renderSummary()`, `renderCategoryCards()`, and `renderExpenseTable()` ensures every section stays consistent after any state change.
+- **Handling filtered or empty tables cleanly**: Filtering by a category can result in zero matching rows even when `expenses` is non-empty. Separating `visibleExpenses` from `expenses` in `renderExpenseTable()` lets the table show a category-specific empty message while keeping total spending accurate across all logged expenses.
+  

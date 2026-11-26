@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SpendWise — Budget &amp; Expense Tracker</title>
+  <title>Sudan Nyang's SpendWise — Budget &amp; Expense Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -18,11 +18,11 @@
       <div class="brand-row">
         <img
           src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"
-          alt="SpendWise wallet icon"
+          alt="Sudan Nyang's SpendWise wallet icon"
           width="32"
           class="logo-img"
         >
-        <span class="brand-name">SpendWise</span>
+        <span class="brand-name">Sudan Nyang's SpendWise</span>
       </div>
 
       <nav class="nav-menu">
@@ -39,90 +39,125 @@
       <!-- Top Header -->
       <header id="main-header" class="top-header">
         <div class="header-copy">
-          <h1>My Budget Tracker</h1>
-          <p class="subtitle">Track your income and expenses in one place.</p>
+          <h1>Sudan Nyang's SpendWise</h1>
+          <p class="subtitle">Track Sudan Nyang's income, monthly budget, and expenses in one place.</p>
         </div>
         <div class="header-meta">
           <span class="period-pill">November 2026</span>
+          <span id="budget-status-badge" class="status-badge">Within Budget</span>
         </div>
       </header>
 
       <main class="dashboard-content">
+        <!-- Live Budget Summary Bar -->
+        <section id="summary-section" class="panel">
+          <div class="panel-heading-row">
+            <h2>Budget Overview</h2>
+            <form id="budget-form" class="budget-inline-form">
+              <label for="monthly-budget-input">Monthly Budget ($)</label>
+              <input type="number" id="monthly-budget-input" min="0" step="0.01" value="1000">
+              <button type="submit" id="update-budget-btn">Update Budget</button>
+            </form>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-box">
+              <span class="summary-label">Monthly Budget</span>
+              <strong id="summary-budget" class="summary-value">$1,000.00</strong>
+            </div>
+            <div class="summary-box">
+              <span class="summary-label">Total Spent</span>
+              <strong id="summary-spent" class="summary-value">$0.00</strong>
+            </div>
+            <div class="summary-box">
+              <span class="summary-label">Remaining Balance</span>
+              <strong id="summary-remaining" class="summary-value">$1,000.00</strong>
+            </div>
+            <div class="summary-box">
+              <span class="summary-label">Budget Used</span>
+              <strong id="summary-usage" class="summary-value">0.0%</strong>
+            </div>
+          </div>
+          <p id="budget-feedback" class="feedback-banner" role="status" aria-live="polite">
+            Budget is healthy and well within monthly limits.
+          </p>
+        </section>
+
         <!-- Category Cards Grid (6 Categories) -->
         <section id="overview-section" class="panel">
           <div class="panel-heading-row">
             <h2>Category Snapshot</h2>
-            <span class="panel-note">Monthly budget vs. spent</span>
+            <span class="panel-note">Updated dynamically from logged expenses</span>
           </div>
 
-          <div class="category-grid">
-            <article class="category-card" tabindex="0">
+          <div id="category-grid" class="category-grid">
+            <article class="category-card" data-category="Food" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Food</h3>
-                <span class="category-tag">71%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$142.50</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $200.00</span>
               </div>
               <p class="card-caption">Groceries, market produce &amp; lunches</p>
             </article>
 
-            <article class="category-card" tabindex="0">
+            <article class="category-card" data-category="Transport" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Transport</h3>
-                <span class="category-tag">48%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$48.00</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $100.00</span>
               </div>
               <p class="card-caption">Daily commutes, rides &amp; fuel</p>
             </article>
 
-            <article class="category-card" tabindex="0">
+            <article class="category-card" data-category="Rent" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Rent</h3>
-                <span class="category-tag">100%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$350.00</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $350.00</span>
               </div>
               <p class="card-caption">Monthly housing &amp; maintenance</p>
             </article>
 
-            <article class="category-card" tabindex="0">
+            <article class="category-card" data-category="Entertainment" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Entertainment</h3>
-                <span class="category-tag">30%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$15.00</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $50.00</span>
               </div>
               <p class="card-caption">Movies, streaming &amp; weekend outings</p>
             </article>
 
-            <article class="category-card" tabindex="0">
+            <article class="category-card" data-category="Savings" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Savings</h3>
-                <span class="category-tag">80%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$120.00</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $150.00</span>
               </div>
               <p class="card-caption">Emergency fund &amp; goal transfers</p>
             </article>
 
-            <article class="category-card" tabindex="0">
+            <article class="category-card" data-category="Utilities" tabindex="0">
               <div class="card-top">
                 <h3 class="category-title">Utilities</h3>
-                <span class="category-tag">62%</span>
+                <span class="category-tag">0%</span>
               </div>
               <div class="card-metric-row">
-                <span class="amount-spent">$49.60</span>
+                <span class="amount-spent">$0.00</span>
                 <span class="amount-budget">of $80.00</span>
               </div>
               <p class="card-caption">Electricity, water &amp; mobile data</p>
@@ -137,12 +172,12 @@
           <form id="expense-form">
             <div class="input-group">
               <label for="expense-name">Expense Name</label>
-              <input type="text" id="expense-name" placeholder="e.g., Groceries">
+              <input type="text" id="expense-name" placeholder="e.g., Groceries" required>
             </div>
 
             <div class="input-group">
               <label for="expense-amount">Amount</label>
-              <input type="number" id="expense-amount" placeholder="e.g., 50">
+              <input type="number" id="expense-amount" placeholder="e.g., 50" min="0.01" step="0.01" required>
             </div>
 
             <div class="input-group">
@@ -163,25 +198,44 @@
               <input type="date" id="expense-date">
             </div>
 
-            <button type="button" id="add-expense-btn">Add Expense</button>
+            <div class="form-actions">
+              <button type="submit" id="add-expense-btn">Add Expense</button>
+              <button type="button" id="reset-sample-btn" class="secondary-btn">Load Sample Expenses</button>
+            </div>
+            <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
           </form>
         </section>
 
         <!-- Interactive Collapsible Instructions -->
         <section id="help-section" class="panel help-panel">
           <details>
-            <summary>How to use this tracker</summary>
+            <summary>How to use Sudan Nyang's SpendWise</summary>
             <p>
-              Enter an expense name, amount, category, and date in the form above, then select
-              <strong>Add Expense</strong>. Form submission logic arrives in Week 7; for now,
-              review the category cards and sample table below.
+              Enter an expense name, positive amount, category, and date, then select
+              <strong>Add Expense</strong>. The expense list, category cards, and remaining balance
+              update immediately, and you can delete individual rows or update your monthly budget.
             </p>
           </details>
         </section>
 
         <!-- Expense Table -->
         <section id="expense-list-section" class="panel">
-          <h2>Your Expenses</h2>
+          <div class="panel-heading-row">
+            <h2>Your Expenses</h2>
+            <div class="filter-controls">
+              <label for="category-filter">Filter:</label>
+              <select id="category-filter">
+                <option value="All">All Categories</option>
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Rent">Rent</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Savings">Savings</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
 
           <table id="expenses-table">
             <thead>
@@ -190,40 +244,10 @@
                 <th>Amount</th>
                 <th>Category</th>
                 <th>Date</th>
+                <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>Groceries</td>
-                <td>$42.50</td>
-                <td>Food</td>
-                <td>2026-11-02</td>
-              </tr>
-              <tr>
-                <td>Matatu Commute</td>
-                <td>$4.00</td>
-                <td>Transport</td>
-                <td>2026-11-04</td>
-              </tr>
-              <tr>
-                <td>Monthly Rent</td>
-                <td>$350.00</td>
-                <td>Rent</td>
-                <td>2026-11-05</td>
-              </tr>
-              <tr>
-                <td>Movie Night</td>
-                <td>$15.00</td>
-                <td>Entertainment</td>
-                <td>2026-11-10</td>
-              </tr>
-              <tr>
-                <td>Mobile Data Bundle</td>
-                <td>$12.00</td>
-                <td>Utilities</td>
-                <td>2026-11-14</td>
-              </tr>
-            </tbody>
+            <tbody id="expenses-tbody"></tbody>
           </table>
         </section>
 
