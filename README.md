@@ -44,4 +44,3 @@ Sudan Nyang's SpendWise is an interactive personal budget and expense tracker bu
 - Keeping static front-end files cleanly organized at the repository root makes GitHub-to-Netlify deployment straightforward and predictable.
 - Connecting GitHub to Netlify creates a continuous deployment pipeline where every push to `main` automatically updates the live website.
 - Testing on the live hosted URL ensures all assets, responsive layouts, and JavaScript interactions work reliably for end users.
-- 
