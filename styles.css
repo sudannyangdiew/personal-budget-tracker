@@ -1,15 +1,15 @@
-/* ELEMENT SELECTORS: Style base HTML tags */
+/* ELEMENT SELECTORS */
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f6f8;
   color: #333333;
-  max-width: 600px;
+  max-width: 720px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
 h1 {
-  margin-bottom: 5px;
+  margin: 0;
   color: #1e293b;
 }
 
@@ -25,15 +25,38 @@ label {
   font-size: 14px;
 }
 
-input {
+input,
+select {
   width: 100%;
   padding: 8px;
   border: 1px solid #cbd5e1;
   border-radius: 4px;
-  box-sizing: border-box; /* Keeps padding from breaking the width */
+  box-sizing: border-box;
+  background-color: #ffffff;
 }
 
-/* ID SELECTORS: Target unique, specific sections */
+button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer; /* Part A.4: Pointer cursor on hover */
+}
+
+button:hover {
+  background-color: #1d4ed8;
+}
+
+summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #0f172a;
+}
+
+/* ID SELECTORS */
 #main-header {
   text-align: center;
   margin-bottom: 30px;
@@ -43,18 +66,40 @@ input {
 
 #add-expense-section {
   background-color: #ffffff;
-  border-left: 5px solid #3b82f6; /* Blue accent bar */
+  border-left: 5px solid #3b82f6;
+}
+
+#help-section {
+  background-color: #fffbeb;
+  border-left: 5px solid #f59e0b;
 }
 
 #expense-list-section {
   background-color: #f8fafc;
-  border-left: 5px solid #10b981; /* Green accent bar */
+  border-left: 5px solid #10b981;
 }
 
-/* CLASS SELECTORS: Reusable styles applied to multiple elements */
+#video-section {
+  background-color: #ffffff;
+  border-left: 5px solid #6366f1;
+}
+
+/* CLASS SELECTORS */
+.header-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.logo-img {
+  border-radius: 6px;
+}
+
 .subtitle {
   color: #64748b;
-  margin-top: 0;
+  margin: 0;
 }
 
 .card {
@@ -68,7 +113,65 @@ input {
   margin-bottom: 15px;
 }
 
-.placeholder-text {
-  color: #94a3b8;
-  font-style: italic;
+.video-wrapper iframe {
+  max-width: 100%;
+  border-radius: 6px;
+}
+
+/* PART A.1: TABLE STYLING */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: #ffffff;
+}
+
+thead tr {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+th,
+td {
+  border: 1px solid #cbd5e1;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+/* PART A.5 & PART A.4: ADVANCED SELECTORS & ROW HOVER */
+/* 1. Descendant selector */
+#expense-list-section td {
+  font-size: 14px;
+}
+
+/* 2. Direct child selector */
+.input-group > label {
+  color: #1e293b;
+}
+
+/* 3. Positional pseudo-classes */
+tbody tr:nth-child(even) {
+  background-color: #f1f5f9;
+}
+
+tbody tr:first-child {
+  font-weight: 600;
+}
+
+/* 4. Negation pseudo-class */
+input:not([type="date"]) {
+  letter-spacing: 0.2px;
+}
+
+/* 5. Focus state for inputs */
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+/* Table row hover highlight */
+tbody tr:hover {
+  background-color: #dbeafe;
 }
